@@ -4,8 +4,15 @@ from pydantic import BaseModel
 from typing import Dict, Any, List, Optional
 import databases
 import sqlalchemy
+import os
+from dotenv import load_dotenv
 
-DATABASE_URL = "postgresql://postgres:root@localhost/tree_db"
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is missing!")
 
 database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()

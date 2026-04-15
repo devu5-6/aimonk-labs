@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL
 
 const TagView = ({ node, onUpdate, isRoot = false }) => {
   const [collapsed, setCollapsed] = useState(false);
